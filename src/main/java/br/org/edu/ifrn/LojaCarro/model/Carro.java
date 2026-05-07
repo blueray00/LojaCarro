@@ -3,14 +3,20 @@ package br.org.edu.ifrn.LojaCarro.model;
 import jakarta.persistence.*;
 
 @Entity
-@Data
 public class Carro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     String modelo;
     int ano;
 
-    public Carro(String modelo, int ano) {
-        this.modelo = modelo;
-        this.ano = ano;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getModelo() {

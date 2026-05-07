@@ -17,7 +17,7 @@ public class CarroController {
 
     @GetMapping
     public void salvarCarro(@RequestBody Carro c){
-        carroService.
+        carroService.save(c);
     }
 
 }
