@@ -20,6 +20,6 @@ jobs:
 
       - name: Grant execute permission to Maven Wrapper
         run: chmod +x mvnw
-
+  tests:
       - name: Compile and run tests
         run: ./mvnw -B clean test
