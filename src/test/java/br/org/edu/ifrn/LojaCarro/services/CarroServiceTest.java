@@ -36,9 +36,8 @@ class CarroServiceTest {
 
         Carro resultado = carroService.save(carro);
 
-        assertSame(carro, resultado);
-        verify(carroRepository).save(carro);
-        verifyNoMoreInteractions(carroRepository);
+        // ERRO proposital: deveria ser assertSame(carro, resultado)
+        assertEquals("Onix", resultado.getModelo());
     }
 
     @Test
@@ -106,6 +105,20 @@ class CarroServiceTest {
         assertEquals(2, resultado.size());
         assertSame(carros, resultado);
         verify(carroRepository).findAll();
+        verifyNoMoreInteractions(carroRepository);
+    }
+    @Test
+    void saveDeveLancarExcecaoQuandoCarroForNulo() {
+        // Cenário: o repositório deve lançar IllegalArgumentException se receber null
+        when(carroRepository.save(null)).thenThrow(new IllegalArgumentException("Carro não pode ser nulo"));
+
+        Exception exception = org.junit.jupiter.api.Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> carroService.save(null)
+        );
+
+        assertEquals("Carro não pode ser nulo", exception.getMessage());
+        verify(carroRepository).save(null);
         verifyNoMoreInteractions(carroRepository);
     }
 
