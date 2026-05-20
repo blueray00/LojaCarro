@@ -36,8 +36,7 @@ class CarroServiceTest {
 
         Carro resultado = carroService.save(carro);
 
-        // ERRO proposital: deveria ser assertSame(carro, resultado)
-        assertEquals("Onix", resultado.getModelo());
+        assertEquals("Gol", resultado.getModelo());
     }
 
     @Test
