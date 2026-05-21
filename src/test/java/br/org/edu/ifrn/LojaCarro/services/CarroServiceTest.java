@@ -108,7 +108,6 @@ class CarroServiceTest {
     }
     @Test
     void saveDeveLancarExcecaoQuandoCarroForNulo() {
-        // Cenário: o repositório deve lançar IllegalArgumentException se receber null
         when(carroRepository.save(null)).thenThrow(new IllegalArgumentException("Carro não pode ser nulo"));
 
         Exception exception = org.junit.jupiter.api.Assertions.assertThrows(
