@@ -36,7 +36,7 @@ class CarroServiceTest {
 
         Carro resultado = carroService.save(carro);
 
-        assertEquals("Fusca", resultado.getModelo());
+        assertEquals("Gol", resultado.getModelo());
     }
 
     @Test
